@@ -16,6 +16,7 @@ import AllPublicationPage from "./components/searchResult/AllPublicationPage";
 import TagSearchResult from "./components/searchResult/TagSearchResult";
 import TextSearchResult from "./components/searchResult/TextSearchResult";
 import Settings from "./components/settings/Settings";
+import Login from "./components/login/Login";
 
 interface Route {
     path: string;
@@ -86,6 +87,11 @@ const _routes = {
         // exact: true,
         component: Catalog,
     } as Route,
+    "/login":{
+        path:"/login",
+        // exact: true,
+        component: Login,
+    },
     "/": {
         path: "/",
         // exact: false,
