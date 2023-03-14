@@ -43,6 +43,13 @@ const headerNav: NavigationHeader[] = [
         matchRoutes: ["/settings"],
         styles: [],
     },
+    // {
+    //     route: "/login",
+    //     label: "login",
+    //     matchRoutes: ["/login"],
+    //     styles: [],
+    // },
+    
 ];
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

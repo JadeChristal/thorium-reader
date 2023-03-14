@@ -88,7 +88,7 @@ export default class App extends React.Component<{}, undefined> {
         const store = diLibraryGet("store"); // diRendererSymbolTable.store
         const history = diLibraryGet("history"); // diRendererSymbolTable.history
         const translator = diLibraryGet("translator"); // diRendererSymbolTable.translator
-
+        
         return (
             <Provider store={store} >
                 <TranslatorContext.Provider value={translator}>

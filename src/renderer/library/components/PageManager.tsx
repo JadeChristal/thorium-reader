@@ -9,9 +9,12 @@ import * as React from "react";
 import { Route, Routes } from "react-router-dom";
 import { routes } from "readium-desktop/renderer/library/routing";
 import { ObjectKeys } from "readium-desktop/utils/object-keys-values";
+import Login from "./login/Login";
+import PrivateRoutes from "./PrivateRoute";
 
 interface IState {
     activePage: number;
+    isAuthenticated: boolean;
 }
 
 export default class PageManager extends React.Component<{}, IState> {
@@ -21,20 +24,26 @@ export default class PageManager extends React.Component<{}, IState> {
 
         this.state = {
             activePage: 0,
+            isAuthenticated: true,
         };
     }
 
     public render(): React.ReactElement<{}> {
         return (
             <Routes>
+                <Route key="login" path="/login" element={<Login/>}/> 
                 {
                     ObjectKeys(routes).map(
                         (path) =>
-                            <Route
+                        { 
+                            const Component = routes[path].component;
+
+                            return <Route
                                 key={path}
                                 path={routes[path].path}
-                                element={React.createElement(routes[path].component)}
-                            />,
+                                element={<PrivateRoutes isAuthenticated={this.state.isAuthenticated} ><Component/> </PrivateRoutes>}
+                            />;
+                        },
                     )
                 }
             </Routes>
