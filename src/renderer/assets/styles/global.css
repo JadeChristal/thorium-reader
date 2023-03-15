@@ -138,7 +138,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  font: 1.1rem "Open Sans", sans-serif;
+  font-family: 'Raleway', sans-serif;
   background: #fbfbfb;
 }
 
@@ -154,7 +154,7 @@ section {
   bottom: 0;
   left: 0;
   right: 0;
-  top: 57px;
+  top: 85px;
 }
 
 nav + nav + .main {

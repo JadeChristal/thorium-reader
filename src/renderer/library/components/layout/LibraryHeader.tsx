@@ -13,6 +13,7 @@ import * as stylesHeader from "readium-desktop/renderer/assets/styles/header.css
 import {
     TranslatorProps, withTranslator,
 } from "readium-desktop/renderer/common/components/hoc/translator";
+import logo from "readium-desktop/renderer/assets/logos/pnld.png";
 import SkipLink from "readium-desktop/renderer/common/components/SkipLink";
 import { ILibraryRootState } from "readium-desktop/renderer/library/redux/states";
 import { DisplayType, IRouterLocationState } from "../../routing";
@@ -43,13 +44,6 @@ const headerNav: NavigationHeader[] = [
         matchRoutes: ["/settings"],
         styles: [],
     },
-    // {
-    //     route: "/login",
-    //     label: "login",
-    //     matchRoutes: ["/login"],
-    //     styles: [],
-    // },
-    
 ];
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -78,16 +72,22 @@ class Header extends React.Component<IProps, undefined> {
                 anchorId="main-content"
                 label={__("accessibility.skipLink")}
             />
-            <nav className={stylesHeader.main_navigation_library} role="navigation" aria-label={__("header.home")}>
-                <ul>
-                    {
-                        headerNav.map(
-                            (item, index) =>
-                                this.buildNavItem(item, index),
-                        )
-                    }
-                </ul>
-            </nav>
+            <header className="main-header">
+                <div className="wrapper-logo">
+                    <img src={logo} alt="PNLD" />
+                    <h1>Programa Nacional do Livro e do Material Didático</h1>
+                </div>
+                <nav className={stylesHeader.main_navigation_library} role="navigation" aria-label={__("header.home")}>
+                    <ul>
+                        {
+                            headerNav.map(
+                                (item, index) =>
+                                    this.buildNavItem(item, index),
+                            )
+                        }
+                    </ul>
+                </nav>
+            </header>
         </>);
     }
 
