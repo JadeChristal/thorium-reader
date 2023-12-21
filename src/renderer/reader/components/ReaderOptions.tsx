@@ -23,7 +23,7 @@ import * as DoneIcon from "readium-desktop/renderer/assets/icons/done.svg";
 import * as PageIcon from "readium-desktop/renderer/assets/icons/page.svg";
 import * as JustifyIcon from "readium-desktop/renderer/assets/icons/justifie.svg";
 import * as StartIcon from "readium-desktop/renderer/assets/icons/gauche.svg";
-import * as PagineIcon from "readium-desktop/renderer/assets/icons/pagine.svg";
+// import * as PagineIcon from "readium-desktop/renderer/assets/icons/pagine.svg";
 import * as stylesReader from "readium-desktop/renderer/assets/styles/reader-app.css";
 import {
     TranslatorProps, withTranslator,
@@ -79,10 +79,11 @@ export class ReaderOptions extends React.Component<IProps, IState> {
         this.state = {
             pdfScale: undefined,
             pdfCol: undefined,
-            pdfView: undefined,
+            pdfView: 'scrolled',
         };
 
         this.handleChooseTheme = this.handleChooseTheme.bind(this);
+
     }
 
     public componentDidUpdate(oldProps: IProps) {
@@ -595,6 +596,7 @@ export class ReaderOptions extends React.Component<IProps, IState> {
 
     private displayContent() {
         const {__, readerConfig, isPdf} = this.props;
+        console.warn(!readerConfig.paged)
 
         return <>
             {
@@ -611,7 +613,7 @@ export class ReaderOptions extends React.Component<IProps, IState> {
                                     name="disposition"
                                     onChange={(e) => isPdf
                                         ? this.props.pdfEventBus.dispatch("view", "scrolled")
-                                        : this.props.handleSettingChange(e, "paged", false)}
+                                        :   this.props.handleSettingChange(e, "paged", false)}
                                     checked={isPdf
                                         ? this.state.pdfView === "scrolled"
                                         : !readerConfig.paged}
@@ -626,7 +628,7 @@ export class ReaderOptions extends React.Component<IProps, IState> {
                                     {__("reader.settings.scrolled")}
                                 </label>
                             </div>
-                            <div className={stylesReader.focus_element}>
+                            {/* <div className={stylesReader.focus_element}>
                                 <input
                                     id={stylesReader.page_option}
                                     type="radio"
@@ -647,7 +649,7 @@ export class ReaderOptions extends React.Component<IProps, IState> {
                                     <SVG ariaHidden={true} svg={PagineIcon} />
                                     {__("reader.settings.paginated")}
                                 </label>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
             }
