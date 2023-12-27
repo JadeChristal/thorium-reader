@@ -13,8 +13,8 @@ import { /*BrowserWindow,*/ Rectangle, screen } from "electron";
 
 export const defaultRectangle = (): Rectangle => (
     {
-        height: 600,
-        width: 800,
+        height: 1024,
+        width: 1280,
         x: Math.round(screen.getPrimaryDisplay().workAreaSize.width / 3),
         y: Math.round(screen.getPrimaryDisplay().workAreaSize.height / 3),
     });
